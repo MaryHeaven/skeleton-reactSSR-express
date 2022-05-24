@@ -1,4 +1,4 @@
-onst React = require('react');
+const React = require('react');
 const Layout = require('./Layout');
 
 function Auth({ title }) {

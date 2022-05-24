@@ -22,6 +22,7 @@ function Lk({ title, name, user }) {
               </>
             )}
             <div><a href="/">На главную</a></div>
+            <div><button type="button" id="createCard">Добавить карточку</button></div>
           </div>
         </div>
       </div>

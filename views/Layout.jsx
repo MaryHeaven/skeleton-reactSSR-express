@@ -1,4 +1,5 @@
 const React = require('react');
+const isLogin = require('../middleware/isLogin');
 
 function Layout({
   title, children, name, user,
@@ -21,26 +22,28 @@ function Layout({
             </button>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                {!user ? (
-                  <>
-                    <li className="nav-item">
-                      <a className="nav-link" aria-current="page" href="/registration">Зарегистрироваться</a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href="/login">Войти</a>
-                    </li>
-                  </>
-                ) : (
-                  <>
-                    <li className="nav-item">
-                      <a className="nav-link" aria-current="page" href="/lk">Личный кабинет</a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" aria-current="page" href="/logout">Выйти</a>
-                    </li>
+                {!isLogin
+                  ? (
+                    <>
+                      <li className="nav-item">
+                        <a className="nav-link" aria-current="page" href="/registration">Зарегистрироваться</a>
+                      </li>
+                      <li className="nav-item">
+                        <a className="nav-link" href="/login">Войти</a>
+                      </li>
+                    </>
+                  )
+                  : (
+                    <>
+                      <li className="nav-item">
+                        <a className="nav-link" aria-current="page" href="/lk">Личный кабинет</a>
+                      </li>
+                      <li className="nav-item">
+                        <a className="nav-link" aria-current="page" href="/logout">Выйти</a>
+                      </li>
 
-                  </>
-                )}
+                    </>
+                  )}
                 <li className="nav-item dropdown">
                   <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dropdown
