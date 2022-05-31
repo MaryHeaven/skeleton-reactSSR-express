@@ -20,7 +20,7 @@ app.use('/', homeRouter);
 app.use('/registration', registrRouter);
 app.use('/login', loginRouter);
 app.use('/lk', lkRouter);
-app.use('/lk', formCardRouter);
+app.use('/formcard', formCardRouter);
 app.use('/logout', logoutRouter);
 
 app.listen(PORT, async () => {

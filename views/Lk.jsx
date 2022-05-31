@@ -6,7 +6,7 @@ const MyCard = require('./MyCards');
 // const { isAuth } = require('../middleware/isAuth');
 
 function Lk({
-  title, name, user, card,
+  title, user, card,
 }) {
   return (
     <Layout title={title} user={user}>
@@ -27,7 +27,7 @@ function Lk({
                 <FormCard />
 
             <div id="cardsDiv">
-              { card.map((el) => <MyCard img={el.img} id={el.id} title={el.title} description={el.description} />)}
+              { card.map((el) => <MyCard card={el} />)}
             </div>
               </>
             )}

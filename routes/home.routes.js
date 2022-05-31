@@ -17,11 +17,6 @@ router.route('/')
     const htmlHome = ReactDOMServer.renderToStaticMarkup(home);
     res.write('<!DOCTYPE html>');
     res.end(htmlHome);
-  })
-  // .delete('/:id', async (req, res) => {
-  //   const { id } = req.params;
-  //   await Card.destroy({ where: { id } });
-  //   res.end();
-  // });
+  });
 
 module.exports = router;
