@@ -5,11 +5,14 @@ const bcrypt = require('bcrypt');
 const router = require('express').Router();
 const Authorization = require('../views/Authorization');
 const { User } = require('../db/models/index');
+const isLogin = require('../middleware/isLogin');
 
-router.route('/')
-  .get((req, res) => {
+router
+  .route('/')
+  .get(isLogin, (req, res) => {
     const auth = React.createElement(Authorization, {
       title: 'Вход',
+      user: req.session.uid,
     });
 
     const htmlAuth = ReactDOMServer.renderToStaticMarkup(auth);
@@ -18,13 +21,20 @@ router.route('/')
   })
   .post(async (req, res) => {
     const { email, password } = req.body;
+
+    // TODO try/catch
     const user = await User.findOne({ where: { email } });
-    if (user && await bcrypt.compare(password, user.password)) {
-      req.session.user = user;
+
+    // TODO try/catch
+    const isSame = await bcrypt.compare(password, user.password);
+
+    if (user && isSame) {
+      req.session.uid = user;
+      console.log('AFTER LOGIN ', req.session.uid);
       res.redirect('/');
     } else {
       res.send({ message: 'Не, такого челика нет, либ неверное пароль' });
-      res.redirect('/login');
+      // res.redirect('/login');
     }
   });
 

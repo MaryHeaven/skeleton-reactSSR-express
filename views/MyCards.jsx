@@ -1,36 +1,27 @@
 const React = require('react');
-const Layout = require('./Layout');
 
-function MyCard({ title }) {
+function MyCard({
+  id, title, description, img,
+}) {
   return (
-    <Layout title={title}>
-      <div className="card">
-        <img src="..." className="card-img-top" alt="..." />
+    <div className="card" id={id}>
+      <img src={img} className="card-img-top" alt="..." />
 
-        <div className="card-body">
-          <h5 className="card-title">Название карточки</h5>
-          <p className="card-text">Описание карточки.</p>
-          <a href="#" className="btn btn-primary">Go somewhere</a>
-        </div>
+      <div className="card-body">
+        <h5 className="card-title">
+          Название карточки -
+          {' '}
+          {title}
+        </h5>
+        <p className="card-text">
+          Описание карточки -
+          {' '}
+          {description}
+        </p>
+        <a href="#" className="btn btn-primary">Редактировать</a>
+        <a href="#" className="btn btn-primary" deleteid={id}>Удалить</a>
       </div>
-
-      <div className="card" aria-hidden="true">
-        <img src="..." className="card-img-top" alt="..." />
-        <div className="card-body">
-          <h5 className="card-title placeholder-glow">
-            <span className="placeholder col-6" />
-          </h5>
-          <p className="card-text placeholder-glow">
-            <span className="placeholder col-7" />
-            <span className="placeholder col-4" />
-            <span className="placeholder col-4" />
-            <span className="placeholder col-6" />
-            <span className="placeholder col-8" />
-          </p>
-          <a href="#" tabIndex="-1" className="btn btn-primary disabled placeholder col-6" />
-        </div>
-      </div>
-    </Layout>
+    </div>
   );
 }
 

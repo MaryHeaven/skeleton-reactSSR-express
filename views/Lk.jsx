@@ -1,10 +1,15 @@
 const React = require('react');
+const isLogin = require('../middleware/isLogin');
 const Layout = require('./Layout');
+const FormCard = require('./FormCard');
+const MyCard = require('./MyCards');
 // const { isAuth } = require('../middleware/isAuth');
 
-function Lk({ title, name, user }) {
+function Lk({
+  title, name, user, card,
+}) {
   return (
-    <Layout title={title}>
+    <Layout title={title} user={user}>
       <div className="container h-100">
         <div className="row h-100 justify-content-center align-items-center">
           <div className="col-10 col-md-8 col-lg-6">
@@ -12,17 +17,21 @@ function Lk({ title, name, user }) {
               <h1>А ты кто и как тут оказался?</h1>
             ) : (
               <>
-                <h1>
-                  Привет,
-                  {name}
-                </h1>
-                <div><h3>Сюда ты можешь добавить свои карточки!!!1!</h3></div>
-                <button type="button" href="/itemform">Добавить карточку</button>
-                <div> </div>
+                <>
+                  <h1>
+                    Привет,
+                    {user.name}
+                  </h1>
+                  <div><h3>Сюда ты можешь добавить свои карточки!!!1!</h3></div>
+                </>
+                <FormCard />
+
+            <div id="cardsDiv">
+              { card.map((el) => <MyCard img={el.img} id={el.id} title={el.title} description={el.description} />)}
+            </div>
               </>
             )}
             <div><a href="/">На главную</a></div>
-            <div><button type="button" id="createCard">Добавить карточку</button></div>
           </div>
         </div>
       </div>

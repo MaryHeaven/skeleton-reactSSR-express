@@ -9,7 +9,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('Card', [{
+    await queryInterface.bulkInsert('Cards', [{
       title: 'Название коко-е-то',
       description: 'Описание какое-то вот тут вот вооот',
       img: '../путь-картинки/картинка.jpeg',

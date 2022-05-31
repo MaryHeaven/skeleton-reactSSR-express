@@ -1,9 +1,9 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-function Auth({ title }) {
+function Auth({ title, user }) {
   return (
-    <Layout title={title}>
+    <Layout title={title} user={user}>
       <div className="container h-100">
         <div className="row h-100 justify-content-center align-items-center">
           <div className="col-10 col-md-8 col-lg-6">

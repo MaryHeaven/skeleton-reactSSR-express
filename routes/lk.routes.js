@@ -4,12 +4,17 @@ const ReactDOMServer = require('react-dom/server');
 const bcrypt = require('bcrypt');
 const router = require('express').Router();
 const Lk = require('../views/Lk');
-const { User } = require('../db/models/index');
+const { User, Card } = require('../db/models/index');
+const isLogin = require('../middleware/isLogin');
 
 router.route('/')
-  .get((req, res) => {
+  .get(async (req, res) => {
+    const card = await Card.findAll({ raw: true });
+    const user = req.session.uid;
     const lk = React.createElement(Lk, {
       title: 'Личный кабинет',
+      user,
+      card,
     });
 
     const htmlLk = ReactDOMServer.renderToStaticMarkup(lk);

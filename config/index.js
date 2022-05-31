@@ -24,7 +24,6 @@ const config = (app) => {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.static(path.join(process.env.PWD, 'public')));
   app.use(morgan('dev'));
-  app.use(cors());
   app.use(upload({ useTempFiles: true }));
 
   // sessions

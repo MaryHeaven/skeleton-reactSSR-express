@@ -10,6 +10,7 @@ router.route('/')
   .get((req, res) => {
     const regis = React.createElement(Registration, {
       title: 'Регистрация',
+      user: req.session.uid,
     });
 
     const regisHtml = ReactDOMServer.renderToStaticMarkup(regis);
@@ -26,7 +27,7 @@ router.route('/')
       const newUser = await User.create({
         name, email, password: await bcrypt.hash(password, 10),
       });
-      req.session.uid = newUser.id;
+      req.session.uid = newUser;
       res.redirect('/');
     }
   });
